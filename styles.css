@@ -1,0 +1,218 @@
+:root {
+  color-scheme: light;
+  font-family: Pretendard, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 0;
+  background: transparent;
+}
+
+body {
+  padding: 12px;
+}
+
+.banner {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 134px;
+  padding: 20px 24px;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  box-shadow: 0 18px 42px rgba(11, 12, 20, 0.22);
+}
+
+.banner::before,
+.banner::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+}
+
+.banner::after {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255, 255, 255, 0.25), transparent 28%),
+    radial-gradient(circle at 86% 100%, rgba(255, 255, 255, 0.13), transparent 34%);
+  opacity: 0.9;
+}
+
+.banner--sudoku::before {
+  background:
+    linear-gradient(115deg, rgba(45, 100, 236, 0.96), rgba(104, 38, 218, 0.98)),
+    #3761e8;
+}
+
+.banner--yahwa::before {
+  background:
+    linear-gradient(105deg, rgba(17, 11, 13, 0.95), rgba(65, 11, 16, 0.94) 55%, rgba(9, 9, 12, 0.97)),
+    image-set(url("assets/yahwa-bg.png") 1x);
+  background-position: center;
+  background-size: cover;
+}
+
+.app-icon {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 12px 22px rgba(0, 0, 0, 0.24);
+}
+
+.app-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sudoku-glyph {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  width: 42px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+.copy {
+  min-width: 0;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.badge {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.stars {
+  color: #ffd95e;
+  letter-spacing: 1px;
+}
+
+h1 {
+  margin: 0 0 5px;
+  color: #fff;
+  font-size: clamp(19px, 3.1vw, 27px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+p {
+  margin: 0;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(13px, 1.8vw, 16px);
+  line-height: 1.35;
+}
+
+.preview {
+  width: clamp(92px, 17vw, 168px);
+  height: 88px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.2);
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 128px;
+  min-height: 42px;
+  padding: 0 17px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  white-space: nowrap;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.21);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.banner--yahwa .cta {
+  background: rgba(205, 49, 42, 0.72);
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 10px;
+  }
+
+  .banner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 13px;
+    min-height: 146px;
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .preview {
+    display: none;
+  }
+
+  .cta {
+    min-width: 112px;
+  }
+}
+
+@media (max-width: 520px) {
+  .banner {
+    grid-template-columns: auto minmax(0, 1fr);
+    min-height: 206px;
+    align-content: center;
+  }
+
+  .app-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 16px;
+  }
+
+  .cta {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    margin-top: 2px;
+  }
+}
