@@ -216,3 +216,67 @@ p {
     margin-top: 2px;
   }
 }
+
+.rotator {
+  position: relative;
+  min-height: 134px;
+}
+
+.rotator .banner {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.rotator .banner.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.rotator-dots {
+  position: absolute;
+  right: 26px;
+  bottom: 20px;
+  z-index: 3;
+  display: flex;
+  gap: 6px;
+}
+
+.rotator-dot {
+  width: 16px;
+  height: 5px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  cursor: pointer;
+  transition: width 0.25s ease, background 0.25s ease;
+}
+
+.rotator-dot.is-active {
+  width: 24px;
+  background: #fff;
+}
+
+@media (max-width: 720px) {
+  .rotator {
+    min-height: 146px;
+  }
+  .rotator-dots {
+    right: 20px;
+    bottom: 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .rotator {
+    min-height: 206px;
+  }
+  .rotator-dots {
+    right: 18px;
+    bottom: 64px;
+  }
+}

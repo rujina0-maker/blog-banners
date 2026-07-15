@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>앱 롤링 배너</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="rotator" aria-label="앱 홍보 롤링 배너">
+    <a class="banner banner--sudoku is-active" href="https://play.google.com/store/apps/details?id=com.info.sudoku" target="_blank" rel="noopener" aria-label="스도쿠 오프라인 숫자 퍼즐 다운로드">
+      <div class="app-icon" aria-hidden="true">
+        <div class="sudoku-glyph"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+      </div>
+      <div class="copy">
+        <div class="meta"><span class="badge">무료</span><span class="stars">★★★★★</span></div>
+        <h1>스도쿠 오프라인 숫자 퍼즐</h1>
+        <p>광고 적은 무료 스도쿠. 데일리 챌린지와 1:1 실시간 대결까지.</p>
+      </div>
+      <div class="preview" aria-hidden="true">
+        <img src="assets/sudoku-preview.png" alt="">
+      </div>
+      <span class="cta">지금 다운로드</span>
+    </a>
+
+    <a class="banner banner--yahwa" href="https://play.google.com/store/apps/details?id=com.yahwa.yourstory" target="_blank" rel="noopener" aria-label="야화취재기 앱 다운로드">
+      <div class="app-icon" aria-hidden="true">
+        <img src="assets/yahwa-icon-256.png" alt="">
+      </div>
+      <div class="copy">
+        <div class="meta"><span class="badge">공포 스토리</span><span>인터랙티브 연재</span></div>
+        <h1>야화취재기</h1>
+        <p>어둠 속 사건을 따라가는 한국형 미스터리 공포 이야기.</p>
+      </div>
+      <div class="preview" aria-hidden="true">
+        <img src="assets/yahwa-bg.png" alt="">
+      </div>
+      <span class="cta">지금 읽기</span>
+    </a>
+
+    <div class="rotator-dots" aria-hidden="true">
+      <button class="rotator-dot is-active" type="button"></button>
+      <button class="rotator-dot" type="button"></button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var slides = Array.prototype.slice.call(document.querySelectorAll(".rotator .banner"));
+      var dots = Array.prototype.slice.call(document.querySelectorAll(".rotator-dot"));
+      var current = 0;
+      var timer = null;
+
+      function show(index) {
+        current = index;
+        slides.forEach(function (slide, i) {
+          slide.classList.toggle("is-active", i === current);
+        });
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle("is-active", i === current);
+        });
+      }
+
+      function next() {
+        show((current + 1) % slides.length);
+      }
+
+      function restart() {
+        window.clearInterval(timer);
+        timer = window.setInterval(next, 4800);
+      }
+
+      dots.forEach(function (dot, i) {
+        dot.addEventListener("click", function () {
+          show(i);
+          restart();
+        });
+      });
+
+      restart();
+    })();
+  </script>
+  <script src="resize-parent.js"></script>
+</body>
+</html>
